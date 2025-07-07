@@ -1,10 +1,9 @@
 """Add noise into text."""
-
-import random
 import string
 from itertools import zip_longest
 
 import textnoisr.noise_unbiasing as unbias
+import secrets
 
 
 class CharNoiseAugmenter:
@@ -61,7 +60,7 @@ class CharNoiseAugmenter:
         ]  # To avoid using list(set(actions))
         self.character_set = character_set
         self.noise_level = noise_level
-        self.random = random.Random(seed)  # nosec
+        self.random = secrets.SystemRandom().Random(seed)  # nosec
         self.natural_language_swap_correction = natural_language_swap_correction
 
         # checks
